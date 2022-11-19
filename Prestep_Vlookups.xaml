@@ -1,0 +1,713 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Presorting_YearofAssignment" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1229,3361" sap2010:WorkflowViewState.IdRef="Presorting_YearofAssignment_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Prestep_Vlookups" sap:VirtualizedContainerService.HintSize="574,3296" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
+      <Variable x:TypeArguments="sd:DataTable" Name="VLOOKUP_Data" />
+      <Variable x:TypeArguments="sd:DataTable" Name="processData" />
+      <Variable x:TypeArguments="x:Int32" Name="Count" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Regex_Data" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="512,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
+        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings", "Constants"}]</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <Sequence DisplayName="Sequence - init" sap:VirtualizedContainerService.HintSize="512,1374" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="inputFilePath" />
+        <Variable x:TypeArguments="s:String[]" Name="outputColumns" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:SelectFile DisplayName="Select File - inputFilePath" Filter="All files (*.csv)|*.csv" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="SelectFile_1" SelectedFile="[inputFilePath]" />
+      <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[processData]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[inputFilePath]" sap:VirtualizedContainerService.HintSize="338,162" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Retrieved Input Data. Found &quot; + processData.Rows.Count.ToString + &quot; rows&quot;]" />
+      <Assign DisplayName="Assign - outputColumns" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:String[]">[outputColumns]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:String[]">[Split(Config("outputColumns").ToString, ",")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each column in newColumns" sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[outputColumns]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:String">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:String" Name="column" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,304" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[processData.Columns.Contains(column)]" DisplayName="If column exists" sap:VirtualizedContainerService.HintSize="484,212" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Else>
+                  <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[column]" DataTable="[processData]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+                </If.Else>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+      <Assign DisplayName="Assign - init Count" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ReadRange AddHeaders="True" DataTable="[VLOOKUP_Data]" DisplayName="Read Range - VLOOKUP_Data" sap:VirtualizedContainerService.HintSize="338,97" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="[Config(&quot;mappingVLOOKUPSheetRange&quot;).ToString]" SheetName="[Config(&quot;mappingVLOOKUPSheetName&quot;).ToString]" WorkbookPath="[Config(&quot;mappingFilePath&quot;).ToString]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ReadRange>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Retrieved VLOOKUP_Data. Found &quot; + VLOOKUP_Data.Rows.Count.ToString + &quot; rows&quot;]" />
+      <ui:ReadRange AddHeaders="True" DataTable="[Regex_Data]" DisplayName="Read Range - Regex_Data" sap:VirtualizedContainerService.HintSize="338,97" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="[Config(&quot;mappingRegexSheetRange&quot;).ToString]" SheetName="[Config(&quot;mappingRegexSheetName&quot;).ToString]" WorkbookPath="[Config(&quot;mappingFilePath&quot;).ToString]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ReadRange>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Retrieved Regex_Data. Found &quot; + Regex_Data.Rows.Count.ToString + &quot; rows&quot;]" />
+    </Sequence>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[processData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="512,1468" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="693,2028" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign - incremend Count" sap:VirtualizedContainerService.HintSize="631,70" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[Count+1]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="631,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Working on row &quot; + Count.ToString]" />
+            <Sequence sap2010:Annotation.AnnotationText="Identify Lead EPM by VLOOKUP Tech Authority Code - Key against table to return EPM. Mark in new column" DisplayName="Sequence - Pre-sorting 2" sap:VirtualizedContainerService.HintSize="631,132" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="TACodeKey" />
+                <Variable x:TypeArguments="x:String" Name="EPM" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign - TACodeKey" sap:VirtualizedContainerService.HintSize="569,70" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[TACodeKey]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[row("Technical_Auth_Code_Key").ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[VLOOKUP_Data]" DisplayName="Lookup Data Table - Retrieve EPM" sap:VirtualizedContainerService.HintSize="569,32" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="TA Code" LookupValue="[TACodeKey]" TargetColumnName="EPM">
+                <ui:LookupDataTable.CellValue>
+                  <OutArgument x:TypeArguments="x:String">[EPM]</OutArgument>
+                </ui:LookupDataTable.CellValue>
+              </ui:LookupDataTable>
+              <If Condition="[IsNothing(EPM)]" DisplayName="If - Lead EPM isnt found" sap:VirtualizedContainerService.HintSize="569,238" sap2010:WorkflowViewState.IdRef="If_4">
+                <If.Then>
+                  <Assign DisplayName="Assign - transaction Lead EPM = &quot;No Return&quot;" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Lead EPM")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">["No Return"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign DisplayName="Assign - transaction Lead EPM" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_14">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Lead EPM")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[EPM.ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Identify Year of Assignment" DisplayName="Sequence - Pre-sorting 7" sap:VirtualizedContainerService.HintSize="631,121" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="MaterialNumberKey" />
+                <Variable x:TypeArguments="ui:GenericValue" Name="YearAssigned" />
+                <Variable x:TypeArguments="x:Int32" Name="parsedValue" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign - MaterialNumberKey" sap:VirtualizedContainerService.HintSize="916.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[MaterialNumberKey]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[row("Material - Material Number (Key)").ToString.Trim]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[VLOOKUP_Data]" DisplayName="Lookup Data Table - Retrieve Year Assigned" sap:VirtualizedContainerService.HintSize="916.8,22.4" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="NSN" LookupValue="[MaterialNumberKey]" TargetColumnName="Year Assigned">
+                <ui:LookupDataTable.CellValue>
+                  <OutArgument x:TypeArguments="ui:GenericValue">[YearAssigned]</OutArgument>
+                </ui:LookupDataTable.CellValue>
+              </ui:LookupDataTable>
+              <If Condition="[IsNothing(YearAssigned)]" DisplayName="If - YearAssigned isnt found" sap:VirtualizedContainerService.HintSize="916.8,552" sap2010:WorkflowViewState.IdRef="If_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Assign DisplayName="Assign - transaction Assigned Year = &quot;No Return&quot;" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Assigned Year")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">["No Return"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(YearAssigned.ToString, &quot;[a-zA-Z]&quot;)]" DisplayName="If - YearAssigned has letters " sap:VirtualizedContainerService.HintSize="610.4,402.4" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Assign DisplayName="Assign - transaction Assigned Year" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[row("Assigned Year")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[YearAssigned.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign - parsedValue" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[parsedValue]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[CInt(YearAssigned.ToString)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="Assign - transaction Assigned Year" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[row("Assigned Year")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[parsedValue.ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Determine Storage Medium" DisplayName="Sequence - Pre-sorting 11" sap:VirtualizedContainerService.HintSize="945,1210" sap2010:WorkflowViewState.IdRef="Sequence_18">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="StorageLocation" />
+                <Variable x:TypeArguments="x:String" Name="StorageMedium" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign - StorageLocation" sap:VirtualizedContainerService.HintSize="883,70" sap2010:WorkflowViewState.IdRef="Assign_27">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[StorageLocation]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[row("Storage Location").ToString.Trim]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="883,669" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <If Condition="[StorageLocation.Substring(0,2) = &quot;25&quot;]" DisplayName="If storage location is in 25 CFSD" sap:VirtualizedContainerService.HintSize="845,432" sap2010:WorkflowViewState.IdRef="If_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Sequence - Handle 25 CFSD" sap:VirtualizedContainerService.HintSize="400,264" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="StorageTypeKey" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign - StorageTypeKey" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_28">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[StorageTypeKey]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[row("Storage Type - Key").ToString.Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[VLOOKUP_Data]" DisplayName="Lookup Data Table - Storage Medium (Name)" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="LookupDataTable_7" LookupColumnName="Storage Type - Key" LookupValue="[StorageTypeKey]" TargetColumnName="Storage_Medium_25CFSD">
+                          <ui:LookupDataTable.CellValue>
+                            <OutArgument x:TypeArguments="x:String">[StorageMedium]</OutArgument>
+                          </ui:LookupDataTable.CellValue>
+                        </ui:LookupDataTable>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Sequence - Handle 7 CFSD" sap:VirtualizedContainerService.HintSize="400,264" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="StorageBinTypeKey" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign - StorageBinTypeKey" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_29">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[StorageBinTypeKey]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[row("Storage Bin Type - Key (Not Compounded)").ToString.Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[VLOOKUP_Data]" DisplayName="Lookup Data Table - Storage Medium (Name)" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="LookupDataTable_8" LookupColumnName="Storage Bin Type - Key (Not Compounded)" LookupValue="[StorageBinTypeKey]" TargetColumnName="Storage_Medium_7CFSD">
+                          <ui:LookupDataTable.CellValue>
+                            <OutArgument x:TypeArguments="x:String">[StorageMedium]</OutArgument>
+                          </ui:LookupDataTable.CellValue>
+                        </ui:LookupDataTable>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="849,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Assign DisplayName="Assign - transaction Storage Medium No Return" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_30">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[row("Storage Medium")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">["#N/A"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <If Condition="[IsNothing(StorageMedium)]" DisplayName="If - StorageMedium isnt found" sap:VirtualizedContainerService.HintSize="569,238" sap2010:WorkflowViewState.IdRef="If_10">
+                <If.Then>
+                  <Assign DisplayName="Assign - transaction Storage Medium No Return" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_38">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Storage Medium")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">["#N/A"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign DisplayName="Assign - transaction Storage Medium" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_31">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Storage Medium")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[StorageMedium.ToString.Trim]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Determine Size factor" DisplayName="Sequence - Pre-sorting 12" sap:VirtualizedContainerService.HintSize="631,121" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="StorageLocation" />
+                <Variable x:TypeArguments="x:Double" Name="SizeFactor" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign - StorageLocation" sap:VirtualizedContainerService.HintSize="688.8,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[StorageLocation]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[row("Storage Location").ToString.Trim]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="688.8,596" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                <TryCatch.Try>
+                  <If Condition="[StorageLocation.Substring(0,2) = &quot;25&quot;]" DisplayName="If storage location is in 25 CFSD" sap:VirtualizedContainerService.HintSize="652,364.8" sap2010:WorkflowViewState.IdRef="If_11">
+                    <If.Then>
+                      <Sequence DisplayName="Sequence - Handle 25 CFSD" sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="StorageTypeKey" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign - StorageTypeKey" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[StorageTypeKey]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[row("Storage Type - Key").ToString.Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[VLOOKUP_Data]" DisplayName="Lookup Data Table - SizeFactor (25)" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="LookupDataTable_9" LookupColumnName="Storage Type - Key" LookupValue="[StorageTypeKey]" TargetColumnName="Cubic Metre (25CFSD)">
+                          <ui:LookupDataTable.CellValue>
+                            <OutArgument x:TypeArguments="x:Double">[SizeFactor]</OutArgument>
+                          </ui:LookupDataTable.CellValue>
+                        </ui:LookupDataTable>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Sequence - Handle 7 CFSD" sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="StorageBinTypeKey" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign - StorageBinTypeKey" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[StorageBinTypeKey]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[row("Storage Bin Type - Key (Not Compounded)").ToString.Trim]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[VLOOKUP_Data]" DisplayName="Lookup Data Table - SizeFactor (7)" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="LookupDataTable_10" LookupColumnName="Storage Bin Type - Key (Not Compounded)" LookupValue="[StorageBinTypeKey]" TargetColumnName="Cubic Metre (7CFSD)">
+                          <ui:LookupDataTable.CellValue>
+                            <OutArgument x:TypeArguments="x:Double">[SizeFactor]</OutArgument>
+                          </ui:LookupDataTable.CellValue>
+                        </ui:LookupDataTable>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="655.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Assign DisplayName="Assign - transaction SizeFactor  No Return" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_40">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Double">[SizeFactor]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Double">1</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <If Condition="[IsNothing(SizeFactor)]" DisplayName="If - SizeFactor isnt found" sap:VirtualizedContainerService.HintSize="688.8,209.6" sap2010:WorkflowViewState.IdRef="If_12">
+                <If.Then>
+                  <Assign DisplayName="Assign - transaction SizeFactor  No Return" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Size factor")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">["1"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign DisplayName="Assign - transaction SizeFactor" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("Size factor")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[SizeFactor.ToString.Trim]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Determine 25 CFSD Bin Structure" DisplayName="Sequence - Pre-sorting 16" sap:VirtualizedContainerService.HintSize="631,121" sap2010:WorkflowViewState.IdRef="Sequence_26">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="SizeFactorColumnNumber" />
+                <Variable x:TypeArguments="x:String" Name="SizeFactorColumnLetter" />
+                <Variable x:TypeArguments="x:Int32" Name="CountColumnNumber" />
+                <Variable x:TypeArguments="x:String" Name="CountColumnLetter" />
+                <Variable x:TypeArguments="x:String" Name="PatternFound" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Determine25CFSDBinStructure workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Determine25CFSDBinStructure.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RegexPatterns">[Regex_Data]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StorageBinKey">[row.Item("Storage Bin - Key").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StorageTypeKey">[row.Item("Storage Type - Key").ToString]</InArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_ReturnValue">[PatternFound]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <Assign DisplayName="Assign - transaction 25 CFSD Bin Structure" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_51">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Object">[row("25 CFSD Bin Structure")]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Object">[PatternFound.ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="Determine Transit Bin" DisplayName="Sequence - Pre-sorting 17" sap:VirtualizedContainerService.HintSize="631,121" sap2010:WorkflowViewState.IdRef="Sequence_23">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="SizeFactorColumnNumber" />
+                <Variable x:TypeArguments="x:String" Name="SizeFactorColumnLetter" />
+                <Variable x:TypeArguments="x:Int32" Name="CountColumnNumber" />
+                <Variable x:TypeArguments="x:String" Name="CountColumnLetter" />
+                <Variable x:TypeArguments="x:String" Name="StorageTypeKey" />
+                <Variable x:TypeArguments="x:String" Name="TransitBin" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign - Storage Type Key" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_47">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[StorageTypeKey]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[row("Storage Type - Key").ToString.Trim]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[New String(){&quot;HPT&quot;,&quot;PAS&quot;,&quot;PHA&quot;,&quot;QA1&quot;,&quot;QUA&quot;,&quot;902&quot;,&quot;916&quot;,&quot;917&quot;,&quot;920&quot;,&quot;922&quot;,&quot;923&quot;,&quot;960&quot;,&quot;999&quot;}.Contains(StorageTypeKey)]" DisplayName="If Storage Bin Key is in the Transit Bin list" sap:VirtualizedContainerService.HintSize="568.8,209.6" sap2010:WorkflowViewState.IdRef="If_13">
+                <If.Then>
+                  <Assign DisplayName="Assign - TransitBin" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_48">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[TransitBin]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">Yes</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign DisplayName="Assign - TransitBin" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_49">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[TransitBin]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">No</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+              <Assign DisplayName="Assign - transaction Transit Bin" sap:VirtualizedContainerService.HintSize="568.8,60" sap2010:WorkflowViewState.IdRef="Assign_50">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Object">[row("Transit Bin")]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Object">[TransitBin]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <Sequence DisplayName="Sequence - create output file" sap:VirtualizedContainerService.HintSize="512,90" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="inputFileName" />
+        <Variable x:TypeArguments="x:String" Name="outputFilePath" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Creating output file&quot;]" />
+      <Assign DisplayName="Assign - inputFileName" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[inputFileName]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">Prestep_VLookups</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - outputFilePath" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[outputFilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Path.Combine(Config("outputFileDir").ToString, Now.ToString.Replace("/", "-").Replace(":", "-").Replace(" ", "T") + " " + inputFileName + ".xlsx")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_WriteLargeRange workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Excel_WriteLargeRange.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_tableRange">[Config("outputSheetRange").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_filePath">[outputFilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_outputSheetName">[Config("outputSheetName").ToString]</InArgument>
+          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_processData">[processData]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_batchSize">[CINT(Config("Excel_WriteBatchSize").ToString)]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Prestep_Vlookups Complete&quot;]" />
+    </Sequence>
+  </Sequence>
+</Activity>
