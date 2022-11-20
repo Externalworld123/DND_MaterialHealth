@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1690,55519</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1690,55282</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -88,7 +88,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1700,55454" sap2010:WorkflowViewState.IdRef="Sequence_14">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1700,55217" sap2010:WorkflowViewState.IdRef="Sequence_14">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="StepType" />
       <Variable x:TypeArguments="x:Int32" Name="StepNumber" />
@@ -110,7 +110,7 @@
         <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Material_Material_Number_Key").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1638,54898" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1638,54661" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,7 +118,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Sequence - Process Steps" sap:VirtualizedContainerService.HintSize="1600,54639" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Sequence - Process Steps" sap:VirtualizedContainerService.HintSize="1600,54402" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -173,7 +173,7 @@
               </If.Else>
             </If>
           </Sequence>
-          <Sequence DisplayName="Sequence - Pre-sorting Steps" sap:VirtualizedContainerService.HintSize="1538,19510" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Sequence - Pre-sorting Steps" sap:VirtualizedContainerService.HintSize="1538,20465" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2233,7 +2233,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeCode>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="Determine Transit Bin" DisplayName="Sequence - Pre-sorting 17" sap:VirtualizedContainerService.HintSize="1476,121" sap2010:WorkflowViewState.IdRef="Sequence_99">
+            <Sequence sap2010:Annotation.AnnotationText="Determine Transit Bin" DisplayName="Sequence - Pre-sorting 17" sap:VirtualizedContainerService.HintSize="1476,1076" sap2010:WorkflowViewState.IdRef="Sequence_99">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Int32" Name="SizeFactorColumnNumber" />
                 <Variable x:TypeArguments="x:String" Name="SizeFactorColumnLetter" />
@@ -2244,7 +2244,7 @@
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
@@ -2331,7 +2331,7 @@
               </ui:InvokeCode>
             </Sequence>
           </Sequence>
-          <Sequence DisplayName="Sequence - Query Steps" sap:VirtualizedContainerService.HintSize="1538,34665" sap2010:WorkflowViewState.IdRef="Sequence_101">
+          <Sequence DisplayName="Sequence - Query Steps" sap:VirtualizedContainerService.HintSize="1538,33473" sap2010:WorkflowViewState.IdRef="Sequence_101">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2493,9 +2493,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_53">
@@ -2576,9 +2585,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_55">
@@ -2659,9 +2677,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_57">
@@ -2742,9 +2769,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_59">
@@ -2815,9 +2851,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_61">
@@ -2888,9 +2933,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_163">
@@ -2961,9 +3015,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_166">
@@ -3034,9 +3097,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_169">
@@ -3107,9 +3179,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_63">
@@ -3180,9 +3261,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_65">
@@ -3253,9 +3343,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_67">
@@ -3337,9 +3436,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_69">
@@ -3421,9 +3529,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_74">
@@ -3494,9 +3611,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Private: Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_76">
@@ -3567,9 +3693,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_78">
@@ -3640,9 +3775,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_82">
@@ -3713,9 +3857,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_84">
@@ -3786,9 +3939,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_86">
@@ -3859,9 +4021,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_88">
@@ -3932,9 +4103,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_90">
@@ -4005,9 +4185,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_94">
@@ -4078,9 +4267,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_96">
@@ -4151,9 +4349,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_98">
@@ -4224,9 +4431,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_103">
@@ -4297,9 +4513,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_157">
@@ -4330,13 +4555,13 @@
                 </If.Then>
               </If>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="Date of Last Demand is earlier than 2017 and Year of Assignment is earlier than 2017" DisplayName="Sequence - Query 26" sap:VirtualizedContainerService.HintSize="969,1324" sap2010:WorkflowViewState.IdRef="Sequence_74">
+            <Sequence sap2010:Annotation.AnnotationText="Date of Last Demand is earlier than 2017 and Year of Assignment is earlier than 2017" DisplayName="Sequence - Query 26" sap:VirtualizedContainerService.HintSize="969,132" sap2010:WorkflowViewState.IdRef="Sequence_74">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Int32" Name="DomantQueryRuleYear" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
@@ -4381,9 +4606,18 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_105">
@@ -4440,9 +4674,18 @@
               </Assign>
               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke set_MaterialHealthCategories workflow" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="set_MaterialHealthCategories.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">[in_Categories_Data]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">[HardCode]</InArgument>
-                  <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">[in_TransactionItem]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Categories_Data">
+                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Categories_Data" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_HardCode">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HardCode" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionData">
+                    <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <Assign DisplayName="Assign - Status = Successful" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_107">
@@ -4485,7 +4728,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="400,440" sap2010:WorkflowViewState.IdRef="Sequence_76">
+            <Sequence sap:VirtualizedContainerService.HintSize="400,443" sap2010:WorkflowViewState.IdRef="Sequence_76">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
