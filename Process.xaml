@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -7,11 +7,15 @@
     <x:Property Name="in_TransactionNumber" Type="InArgument(x:Int32)" />
     <x:Property Name="In_ProcessData" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="MNkey" Type="InOutArgument(x:String)" />
+    <x:Property Name="sbin" Type="InArgument(x:String)" />
   </x:Members>
+  <this:Process.sbin>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.sbin>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1690,55429</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1690,55519</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -81,9 +85,10 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1700,55364" sap2010:WorkflowViewState.IdRef="Sequence_14">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1700,55454" sap2010:WorkflowViewState.IdRef="Sequence_14">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="StepType" />
       <Variable x:TypeArguments="x:Int32" Name="StepNumber" />
@@ -105,7 +110,7 @@
         <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Material_Material_Number_Key").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1638,54808" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1638,54898" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,7 +118,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Sequence - Process Steps" sap:VirtualizedContainerService.HintSize="1600,54549" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Sequence - Process Steps" sap:VirtualizedContainerService.HintSize="1600,54639" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -168,7 +173,7 @@
               </If.Else>
             </If>
           </Sequence>
-          <Sequence DisplayName="Sequence - Pre-sorting Steps" sap:VirtualizedContainerService.HintSize="1538,19420" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Sequence - Pre-sorting Steps" sap:VirtualizedContainerService.HintSize="1538,19510" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1472,7 +1477,7 @@
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="Determine Size factor" DisplayName="Sequence - Pre-sorting 12" sap:VirtualizedContainerService.HintSize="1476,1190" sap2010:WorkflowViewState.IdRef="Sequence_92">
+            <Sequence sap2010:Annotation.AnnotationText="Determine Size factor" DisplayName="Sequence - Pre-sorting 12" sap:VirtualizedContainerService.HintSize="1476,1170" sap2010:WorkflowViewState.IdRef="Sequence_92">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="StorageLocation" />
                 <Variable x:TypeArguments="x:Double" Name="SizeFactor" />
@@ -1591,7 +1596,7 @@
                   </Catch>
                 </TryCatch.Catches>
               </TryCatch>
-              <If Condition="[IsNothing(SizeFactor)]" DisplayName="If - SizeFactor isnt found" sap:VirtualizedContainerService.HintSize="969,716" sap2010:WorkflowViewState.IdRef="If_48">
+              <If Condition="[IsNothing(SizeFactor)]" DisplayName="If - SizeFactor isnt found" sap:VirtualizedContainerService.HintSize="969,696" sap2010:WorkflowViewState.IdRef="If_48">
                 <If.Then>
                   <Sequence sap:VirtualizedContainerService.HintSize="462,528" sap2010:WorkflowViewState.IdRef="Sequence_127">
                     <sap:WorkflowViewStateService.ViewState>
@@ -1672,7 +1677,7 @@
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="Determine Storage &amp; Bin" DisplayName="Sequence - Pre-sorting 13" sap:VirtualizedContainerService.HintSize="1476,1167" sap2010:WorkflowViewState.IdRef="Sequence_95">
+            <Sequence sap2010:Annotation.AnnotationText="Determine Storage &amp; Bin" DisplayName="Sequence - Pre-sorting 13" sap:VirtualizedContainerService.HintSize="1476,1277" sap2010:WorkflowViewState.IdRef="Sequence_95">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="StorageLocation" />
                 <Variable x:TypeArguments="x:String" Name="PalletEquivalent" />
@@ -1700,7 +1705,7 @@
                   <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Storage_Location").ToString.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[StorageLocation.Substring(0,2) = &quot;25&quot;]" DisplayName="If storage location is in 25 CFSD" sap:VirtualizedContainerService.HintSize="845,794" sap2010:WorkflowViewState.IdRef="If_49">
+              <If Condition="[StorageLocation.Substring(0,2) = &quot;25&quot;]" DisplayName="If storage location is in 25 CFSD" sap:VirtualizedContainerService.HintSize="845,904" sap2010:WorkflowViewState.IdRef="If_49">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1708,7 +1713,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence DisplayName="Sequence - Handle 25 CFSD" sap:VirtualizedContainerService.HintSize="400,626" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                  <Sequence DisplayName="Sequence - Handle 25 CFSD" sap:VirtualizedContainerService.HintSize="400,736" sap2010:WorkflowViewState.IdRef="Sequence_93">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="StorageTypeKey" />
                       <Variable x:TypeArguments="x:String" Name="StorageBinKey" />
@@ -1742,13 +1747,31 @@
                         <InArgument x:TypeArguments="x:Object">[StorageTypeKey &amp; " - " &amp; StorageBinKey]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_25">
+                    <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_232">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[sbin]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[StorageTypeKey+" - "+StorageBinKey]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_60">
                       <ui:InvokeCode.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="ColName">Storage_Bin</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Value">[StorageTypeKey &amp; " - " &amp; StorageBinKey]</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                          <Literal x:TypeArguments="x:String">Storage_Bin</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Value">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="sbin" />
+                        </InArgument>
                       </ui:InvokeCode.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1760,7 +1783,7 @@
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Sequence - Handle 7 CFSD" sap:VirtualizedContainerService.HintSize="400,626" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                  <Sequence DisplayName="Sequence - Handle 7 CFSD" sap:VirtualizedContainerService.HintSize="400,736" sap2010:WorkflowViewState.IdRef="Sequence_94">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="StorageBinTypeKey" />
                       <Variable x:TypeArguments="x:String" Name="StorageBinKey" />
@@ -1794,13 +1817,31 @@
                         <InArgument x:TypeArguments="x:Object">[StorageBinTypeKey &amp; " - " &amp; StorageBinKey]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_26">
+                    <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_233">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[sbin]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[StorageBinTypeKey +" - " +StorageBinKey]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_61">
                       <ui:InvokeCode.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="ColName">Storage_Bin</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Value">[StorageBinTypeKey &amp; " - " &amp; StorageBinKey]</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                          <Literal x:TypeArguments="x:String">Storage_Bin</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Value">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="sbin" />
+                        </InArgument>
                       </ui:InvokeCode.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2376,11 +2417,21 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_31">
                         <ui:InvokeCode.Arguments>
-                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="ColName">Tranche_1</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="Value">No</InArgument>
+                          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                            <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                          </InOutArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                            <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                            <Literal x:TypeArguments="x:String">Tranche_1?</Literal>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="Value">
+                            <Literal x:TypeArguments="x:String">No</Literal>
+                          </InArgument>
                         </ui:InvokeCode.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2409,11 +2460,21 @@
                     </Assign>
                     <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_32">
                       <ui:InvokeCode.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="ColName">Tranche_1</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Value">Yes</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                          <Literal x:TypeArguments="x:String">Tranche_1?</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Value">
+                          <Literal x:TypeArguments="x:String">Yes</Literal>
+                        </InArgument>
                       </ui:InvokeCode.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2447,11 +2508,21 @@
                     </Assign>
                     <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_33">
                       <ui:InvokeCode.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="ColName">Status</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Value">Successful</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                          <Literal x:TypeArguments="x:String">Status</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Value">
+                          <Literal x:TypeArguments="x:String">Successful</Literal>
+                        </InArgument>
                       </ui:InvokeCode.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2520,11 +2591,21 @@
                     </Assign>
                     <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_34">
                       <ui:InvokeCode.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="ColName">Status</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Value">Successful</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                          <Literal x:TypeArguments="x:String">Status</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Value">
+                          <Literal x:TypeArguments="x:String">Successful</Literal>
+                        </InArgument>
                       </ui:InvokeCode.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2554,7 +2635,7 @@
                   <InArgument x:TypeArguments="x:Int32">[StepNumber+1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[(in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;) Or in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;not serviceable&quot;)) _&#xA;And&#xA;in_TransactionItem.SpecificContent(&quot;Material_Stock_Classification_Text&quot;).ToString.Trim.ToLower.Contains(&quot;consumable&quot;) _&#xA;And CDec(in_TransactionItem.SpecificContent(&quot;Price&quot;).ToString.Trim) &lt; 25000.00]" DisplayName="If " sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_10">
+              <If Condition="[(in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;) Or in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;not serviceable&quot;)) _&#xD;&#xA;And&#xD;&#xA;in_TransactionItem.SpecificContent(&quot;Material_Stock_Classification_Text&quot;).ToString.Trim.ToLower.Contains(&quot;consumable&quot;) _&#xD;&#xA;And CDec(in_TransactionItem.SpecificContent(&quot;Price&quot;).ToString.Trim) &lt; 25000.00]" DisplayName="If " sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_10">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2593,11 +2674,21 @@
                     </Assign>
                     <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_ProcessData.AsEnumerable().Where(Function(row) row(&quot;Material_Material_Number_Key&quot;).Equals(MNkey)).ToList.ForEach(sub(row)row(ColName)=Value)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="InvokeCode_35">
                       <ui:InvokeCode.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">[In_ProcessData]</InOutArgument>
-                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">[MNkey]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="ColName">Status</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Value">Successful</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="In_ProcessData">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="In_ProcessData" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MNkey">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MNkey" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="ColName">
+                          <Literal x:TypeArguments="x:String">Status</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Value">
+                          <Literal x:TypeArguments="x:String">Successful</Literal>
+                        </InArgument>
                       </ui:InvokeCode.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2627,7 +2718,7 @@
                   <InArgument x:TypeArguments="x:Int32">[StepNumber+1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[(in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;) Or in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;not serviceable&quot;)) _&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Repair_Code_Text&quot;).ToString.Trim.ToLower.Contains(&quot;non-repairable&quot;) _&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Stock_Classification_Text&quot;).ToString.Trim.ToLower.Contains(&quot;accountable&quot;) _&#xA;And CDec(in_TransactionItem.SpecificContent(&quot;Price&quot;).ToString.Trim) &lt; 25000.00]" DisplayName="If" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_11">
+              <If Condition="[(in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;) Or in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;not serviceable&quot;)) _&#xD;&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Repair_Code_Text&quot;).ToString.Trim.ToLower.Contains(&quot;non-repairable&quot;) _&#xD;&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Stock_Classification_Text&quot;).ToString.Trim.ToLower.Contains(&quot;accountable&quot;) _&#xD;&#xA;And CDec(in_TransactionItem.SpecificContent(&quot;Price&quot;).ToString.Trim) &lt; 25000.00]" DisplayName="If" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_11">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -3306,7 +3397,7 @@
                   <InArgument x:TypeArguments="s:String[]">[{"D", "G", "P"}]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[(in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;disposal&quot;) _&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Lead_IMA_Key&quot;).ToString.Trim &lt;&gt; &quot;1B&quot;) _&#xA;Or _&#xA;(in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;disposal&quot;) _&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Lead_IMA_Key&quot;).ToString.Trim = &quot;1B&quot; _&#xA;And Not(StockTypes.Contains(in_TransactionItem.SpecificContent(&quot;Material_Stock_Type_Supply_Key&quot;).ToString.Trim)))]" DisplayName="If - Storage Location =Disposal locs, item is not Cleared or Under Consideration for Disposal" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_17">
+              <If Condition="[(in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;disposal&quot;) _&#xD;&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Lead_IMA_Key&quot;).ToString.Trim &lt;&gt; &quot;1B&quot;) _&#xD;&#xA;Or _&#xD;&#xA;(in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;disposal&quot;) _&#xD;&#xA;And in_TransactionItem.SpecificContent(&quot;Material_Lead_IMA_Key&quot;).ToString.Trim = &quot;1B&quot; _&#xD;&#xA;And Not(StockTypes.Contains(in_TransactionItem.SpecificContent(&quot;Material_Stock_Type_Supply_Key&quot;).ToString.Trim)))]" DisplayName="If - Storage Location =Disposal locs, item is not Cleared or Under Consideration for Disposal" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_17">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -3379,7 +3470,7 @@
                   <InArgument x:TypeArguments="x:Int32">[StepNumber+1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[in_TransactionItem.SpecificContent(&quot;Material_Repair_Code_Key&quot;).ToString.Trim = &quot;D&quot; _&#xA;And in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;)]" DisplayName="If - Material Repair Code = D (2nd Line Repair) and item is in an Unserviceable location" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_18">
+              <If Condition="[in_TransactionItem.SpecificContent(&quot;Material_Repair_Code_Key&quot;).ToString.Trim = &quot;D&quot; _&#xD;&#xA;And in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;)]" DisplayName="If - Material Repair Code = D (2nd Line Repair) and item is in an Unserviceable location" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_18">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4036,7 +4127,7 @@
                   <InArgument x:TypeArguments="x:Int32">[StepNumber+1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[CDbl(in_TransactionItem.SpecificContent(&quot;Quality Inspection&quot;)) &gt; 0.00]" DisplayName="If - Quality Inspection &gt;0" sap:VirtualizedContainerService.HintSize="484,947" sap2010:WorkflowViewState.IdRef="If_29">
+              <If Condition="[CDbl(in_TransactionItem.SpecificContent(&quot;Quality_Inspection&quot;)) &gt; 0.00]" DisplayName="If - Quality Inspection &gt;0" sap:VirtualizedContainerService.HintSize="484,947" sap2010:WorkflowViewState.IdRef="If_29">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4109,7 +4200,7 @@
                   <InArgument x:TypeArguments="x:Int32">[StepNumber+1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;not serviceable&quot;)]" DisplayName="If - Storage Location has not serviceable" sap:VirtualizedContainerService.HintSize="484,947" sap2010:WorkflowViewState.IdRef="If_30">
+              <If Condition="[in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;not serviceable&quot;)]" DisplayName="If - Storage Location has not serviceable" sap:VirtualizedContainerService.HintSize="484,947" sap2010:WorkflowViewState.IdRef="If_30">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4182,7 +4273,7 @@
                   <InArgument x:TypeArguments="x:Int32">[StepNumber+1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[in_TransactionItem.SpecificContent(&quot;Storage Location Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;)]" DisplayName="If - Storage Location has Repairable Reserve" sap:VirtualizedContainerService.HintSize="484,947" sap2010:WorkflowViewState.IdRef="If_39">
+              <If Condition="[in_TransactionItem.SpecificContent(&quot;Storage_Location_Group&quot;).ToString.Trim.ToLower.Contains(&quot;repairable reserve&quot;)]" DisplayName="If - Storage Location has Repairable Reserve" sap:VirtualizedContainerService.HintSize="484,947" sap2010:WorkflowViewState.IdRef="If_39">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4266,7 +4357,7 @@
                   <InArgument x:TypeArguments="x:Int32">[CINT(in_Config("DormantQueryRuleYear").ToString)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <If Condition="[CInt(If(in_TransactionItem.SpecificContent(&quot;Last Demand Year&quot;).ToString=&quot;No Demand&quot;, &quot;0&quot;, in_TransactionItem.SpecificContent(&quot;Last Demand Year&quot;).ToString)) &lt; DomantQueryRuleYear _&#xA;And CInt(in_TransactionItem.SpecificContent(&quot;Assigned Year&quot;).ToString) &lt; DomantQueryRuleYear]" DisplayName="If - Date of Last Demand is earlier than 2017 and Year of Assignment is earlier than 2017" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_31">
+              <If Condition="[CInt(If(in_TransactionItem.SpecificContent(&quot;Last_Demand_Year&quot;).ToString=&quot;No Demand&quot;, &quot;0&quot;, in_TransactionItem.SpecificContent(&quot;Last_Demand_Year&quot;).ToString)) &lt; DomantQueryRuleYear _&#xD;&#xA;And CInt(in_TransactionItem.SpecificContent(&quot;Assigned_Year&quot;).ToString) &lt; DomantQueryRuleYear]" DisplayName="If - Date of Last Demand is earlier than 2017 and Year of Assignment is earlier than 2017" sap:VirtualizedContainerService.HintSize="484,951" sap2010:WorkflowViewState.IdRef="If_31">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
